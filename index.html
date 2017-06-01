@@ -36,7 +36,7 @@
                       <div class="col-md-5" id="point">
                                                 <br>
                            <div><h4><b><span id="timer"></span></b></h4></div>                      
-                           <div><h4>Correct Answer: &nbsp<span id="point"></span></h4></div>
+                           <div><h4>Correct Answer: &nbsp<span id="correct"></span></h4></div>
                            <div><h4>Wrong Answer: &nbsp<span id="wrong"></span></h4></div>
                            <div><h4>Not Answer: &nbsp<span id="notAnswer"></span></h4></div>
                       </div> 
@@ -118,7 +118,8 @@
 	              a:  "% sign",
 	              b:  "? Sign",
 	              c:  "$ sign",
-	              d:  "/* sign"},
+	              d:  "/* sign",
+	          	  e: "true"},
               Q2:  {
 	              q1: "Which jQuery method is used to hide selected elements?", //    Ans:B
 	              a: "//hidden()",
@@ -159,63 +160,141 @@ $("#question #start1").on("click",function(){
                   $("#answer").show();
       $(this).hide(5000);
   	  $("#answer #span1").html(question.Q1.a);
-      answerSpan1(loose)
     	$("#answer #span2").html(question.Q1.b);
-      answerSpan2(loose)
     	$("#answer #span3").html(question.Q1.c);
-		  answerSpan3(win);
     	$("#answer #span4").html(question.Q1.d); 
-		  answerSpan4(loose);
+      				$("#answer #span1").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span2").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+     
+      				$("#answer #span3").on("click", function(){
+				    $("#answer").hide();
+				    point(true);
+				    }); 
+      
+      				$("#answer #span4").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+                    }); 
 	    });
 
 $("#question #start2").on("click",function(){
-                      $("#answer").show();
+                      
       $(this).hide(5000);
+      $("#answer").show();
       $("#answer #span1").html(question.Q2.a);
-      answerSpan1(loose)
       $("#answer #span2").html(question.Q2.b);
-      answerSpan2(win)
       $("#answer #span3").html(question.Q2.c);
-      answerSpan3(loose);
-      $("#answer #span4").html(question.Q2.d); 
-      answerSpan4(loose);   		
-    	});
+      $("#answer #span4").html(question.Q2.d);
+      				$("#answer #span1").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span2").on("click", function(){
+				    $("#answer").hide();
+				    point(true);
+				    }); 
+     
+      				$("#answer #span3").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span4").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+                    });  
+});
+
+
 $("#question #start3").on("click",function(){
                       $("#answer").show();
       $(this).hide(5000);
       $("#answer #span1").html(question.Q3.a);
-      answerSpan1(loose)
       $("#answer #span2").html(question.Q3.b);
-      answerSpan2(win)
       $("#answer #span3").html(question.Q3.c);
-      answerSpan3(loose);
       $("#answer #span4").html(question.Q3.d); 
-      answerSpan4(loose);  		
+            		$("#answer #span1").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span2").on("click", function(){
+				    $("#answer").hide();
+				    point(true);
+				    }); 
+     
+      				$("#answer #span3").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span4").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+                    });  		
     	});
 $("#question #start4").on("click",function(){
                       $("#answer").show();
       $(this).hide(5000);
       $("#answer #span1").html(question.Q4.a);
-      answerSpan1(win)
       $("#answer #span2").html(question.Q4.b);
-      answerSpan2(loose)
       $("#answer #span3").html(question.Q4.c);
-      answerSpan3(loose);
       $("#answer #span4").html(question.Q4.d); 
-      answerSpan4(loose);   		
+            		$("#answer #span1").on("click", function(){
+				    $("#answer").hide();
+				    point(true);
+				    }); 
+      
+      				$("#answer #span2").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+     
+      				$("#answer #span3").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span4").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+                    });  		
     	});
 
-    	 	$("#question #start5").on("click",function(){
+ $("#question #start5").on("click",function(){
                     $("#answer").show();
       $(this).hide(5000);
       $("#answer #span1").html(question.Q5.a);
-      answerSpan1(loose)
       $("#answer #span2").html(question.Q5.b);
-      answerSpan2(win)
       $("#answer #span3").html(question.Q5.c);
-      answerSpan3(loose);
-      $("#answer #span4").html(question.Q5.d); 
-      answerSpan4(loose); 		
+      $("#answer #span4").html(question.Q5.d);  
+            		$("#answer #span1").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span2").on("click", function(){
+				    $("#answer").hide();
+				    point(true);
+				    }); 
+     
+      				$("#answer #span3").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+				    }); 
+      
+      				$("#answer #span4").on("click", function(){
+				    $("#answer").hide();
+				    point(false);
+                    });		
     	});
 
 function audio(){
@@ -226,7 +305,7 @@ function audio(){
     });
   };
 function timer(){
-        var timeLeft = 15;
+        var timeLeft = 30;
         var timerId = setInterval(countdown, 1000);
         function countdown() {
           if (timeLeft == -1) {
@@ -244,36 +323,51 @@ function timer(){
         }
       };
 
-function answerSpan1(winLoose){
+
+
+
+    var win = 0;
+    var loose = 0;
+function point(result){
+	var winLoose = result;
+
+    if (winLoose == true) {
+    	win += 5;
+    	$("#correct").html(win);    	
+    }else{
+    	loose += 5;
+    	$("#wrong").html(loose);
+    }
+    return win;
+    return loose;
+};
+
+
+
     $("#answer #span1").on("click", function(){
-    winLoose++;
     $("#answer").hide();
-  })
-}
+    point(true);
+   });
 
-function answerSpan2(winLoose){
     $("#answer #span2").on("click", function(){
-    winLoose++;
     $("#answer").hide();
-    $("#question #start1").hide();
-  })
-}
+    point(true);
+  });
 
-function answerSpan3(winLoose){
+
+
 		$("#answer #span3").on("click", function(){
-		winLoose++;
 		$("#answer").hide();
-		$("#question #start1").hide();
-	})
-}
+		point(true);
+	});
 
-function answerSpan4(winLoose){
+
+
 		$("#answer #span4").on("click", function(){
-		winLoose++;
 		$("#answer").hide();
-		$("#question #start1").hide();
-	}) 
-}
+		point(true);
+	}) ;
+
 
 
 });
