@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trivia Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">   
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script
+        src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+ <style type="text/css" >
+		body{
+	  		background-color: black ;
+        margin-top: 20px;
+	  	}
+    .navbar{background-color: black;}
+    a{
+      font-size: 40px;
+      color: red;
+    }
+</style> 
+
+
+</head>
+
+<body >
+      <nav class="navbar navbar-default  navbar-inverse navbar-fixed ">
+        <div class="row">
+        		<div class="col-md-9" >
+                      <div class="col-md-7"  id="logo">
+                      <img src="assets/images/01.jpg" alt="/" style="width:100px;height:100px;"> 
+                  			<a href="index.html "><b>Trivia Game</b></a> 
+                      </div>
+
+                      <div class="col-md-5" id="point">
+                                                <br>
+                           <div><h4><b><span id="timer"></span></b></h4></div>                      
+                           <div><h4>Correct Answer: &nbsp<span id="point"></span></h4></div>
+                           <div><h4>Wrong Answer: &nbsp<span id="wrong"></span></h4></div>
+                           <div><h4>Not Answer: &nbsp<span id="notAnswer"></span></h4></div>
+                      </div> 
+        		</div>
+
+
+
+        		<div class="col-md-3 navbar-left" id="pic">
+              <br><br><br>
+              <button id="start"  type="button" class="btn btn-danger">Start Timer</button> 
+              <button id="rules"  type="button" class="btn btn-success">Rules</button>
+        			<ul class="nav navbar-nav " id="navPic">
+		          </ul>
+        		</div> 
+
+        </div> <!-- row -->
+      </nav>
+
+
+
+<audio id="mysoundclip" preload="auto">
+   <source src="assets\css\song.mp3"></source>
+</audio>
+
+
+
+<div class="container" id="main">
+          <div class="row" id="button">
+                <div class="col-md-7"  id="question">
+                   <h4><b>Question</b></h4>
+                     <button id="start1"  type="button" class="btn btn-info btn-block"><span id="span1"></span></button> <br>
+                      <button id="start2"  type="button" class="btn btn-info btn-block"><span id="span2"></span></button> <br>
+                       <button id="start3"  type="button" class="btn btn-info btn-block"><span id="span3"></span></button> <br>
+                        <button id="start4"  type="button" class="btn btn-info btn-block"><span id="span4"></span></button><br> 
+                         <button id="start5"  type="button" class="btn btn-info btn-block"><span id="span5"></span></button><br> 
+                  
+
+                </div>
+
+                <div class="col-md-1">
+                </div>
+
+        <div class="col-md-4" id="answer">
+            <br><br><h4><b>Answer</b></h4>
+             <button id="start1"  type="button" class="btn btn-info btn-block"><span id="span1"></span></button><br>
+              <button id="start2"  type="button" class="btn btn-info btn-block"><span id="span2"></span></button> <br>
+               <button id="start3"  type="button" class="btn btn-info btn-block"><span id="span3"></span></button> <br>
+                <button id="start4"  type="button" class="btn btn-info btn-block"><span id="span4"></span></button><br>
+            <p id="Defender"></p>
+    		</div>	
+          </div>
+
+    <footer>
+        Copyright &copy; 2nd July 2017 Friday assignment by Zubaer
+    </footer>
+</div>
+
+<!-- ---------------------------------------------------- -->
+
+<script type="text/javascript">
+       $(document).ready(function(){
+
+       	audio();
+       	var selectButton = true;
+       	var win = 0;
+       	var loose = 0;
+		if (selectButton){
+
+		}
+       	
+
+
+
+
+       	var q1= "Which sign does jQuery use as a shortcut for jQuery?"
+         var question = {
+              Q1 : {
+	              q1: "Which sign does jQuery use as a shortcut for jQuery?",
+	              a:  "% sign",
+	              b:  "? Sign",
+	              c:  "$ sign",
+	              d:  "/* sign"},
+              Q2:  {
+	              q1: "Which jQuery method is used to hide selected elements?", //    Ans:B
+	              a: "//hidden()",
+	              b: "hide()",
+	              c: "visible(false)",
+	              d: "display(none)"},
+              Q3:  {
+	              q1: "What scripting language is jQuery written in?",  //ans: B
+	              a: "VBScript",
+	              b: "JavaScript",
+	              c: "C# ",
+	              d: "C++ "},
+              Q4:  {
+	              q1: "What is meaning of jQuery",   //  Ans: A
+	              a: "JavaScript library",
+	              b: "Ruby Gem ",
+	              c: "PHP Framework",
+	              d: "None of the above"},
+              Q5:  {
+	              q1: "Code is used to: $(document).ready(function() {",  //ans-B
+	              a:"Executed till the entire page is fully loaded",
+	              b:"executed till the DOM is fully loaded",
+	              c:"Both A and B",
+	              d:"Neither A nor B"}
+            };  
+
+        $("#start").on("click", function(){
+        	$("#question").show();
+          timer();
+        	$("#question #span1").html(question.Q1.q1);
+        	$("#question #span2").html(question.Q2.q1);
+        	$("#question #span3").html(question.Q3.q1);
+        	$("#question #span4").html(question.Q4.q1);
+        	$("#question #span5").html(question.Q5.q1);
+        });
+
+$("#question #start1").on("click",function(){
+                  $("#answer").show();
+      $(this).hide(5000);
+  	  $("#answer #span1").html(question.Q1.a);
+      answerSpan1(loose)
+    	$("#answer #span2").html(question.Q1.b);
+      answerSpan2(loose)
+    	$("#answer #span3").html(question.Q1.c);
+		  answerSpan3(win);
+    	$("#answer #span4").html(question.Q1.d); 
+		  answerSpan4(loose);
+	    });
+
+$("#question #start2").on("click",function(){
+                      $("#answer").show();
+      $(this).hide(5000);
+      $("#answer #span1").html(question.Q2.a);
+      answerSpan1(loose)
+      $("#answer #span2").html(question.Q2.b);
+      answerSpan2(win)
+      $("#answer #span3").html(question.Q2.c);
+      answerSpan3(loose);
+      $("#answer #span4").html(question.Q2.d); 
+      answerSpan4(loose);   		
+    	});
+$("#question #start3").on("click",function(){
+                      $("#answer").show();
+      $(this).hide(5000);
+      $("#answer #span1").html(question.Q3.a);
+      answerSpan1(loose)
+      $("#answer #span2").html(question.Q3.b);
+      answerSpan2(win)
+      $("#answer #span3").html(question.Q3.c);
+      answerSpan3(loose);
+      $("#answer #span4").html(question.Q3.d); 
+      answerSpan4(loose);  		
+    	});
+$("#question #start4").on("click",function(){
+                      $("#answer").show();
+      $(this).hide(5000);
+      $("#answer #span1").html(question.Q4.a);
+      answerSpan1(win)
+      $("#answer #span2").html(question.Q4.b);
+      answerSpan2(loose)
+      $("#answer #span3").html(question.Q4.c);
+      answerSpan3(loose);
+      $("#answer #span4").html(question.Q4.d); 
+      answerSpan4(loose);   		
+    	});
+
+    	 	$("#question #start5").on("click",function(){
+                    $("#answer").show();
+      $(this).hide(5000);
+      $("#answer #span1").html(question.Q5.a);
+      answerSpan1(loose)
+      $("#answer #span2").html(question.Q5.b);
+      answerSpan2(win)
+      $("#answer #span3").html(question.Q5.c);
+      answerSpan3(loose);
+      $("#answer #span4").html(question.Q5.d); 
+      answerSpan4(loose); 		
+    	});
+
+function audio(){
+    var audio = $("#mysoundclip")[0];
+      console.log(audio);
+    $("#start").click(function() {
+      audio.play();
+    });
+  };
+function timer(){
+        var timeLeft = 15;
+        var timerId = setInterval(countdown, 1000);
+        function countdown() {
+          if (timeLeft == -1) {
+            clearTimeout(timerId);
+            $("#answer").hide(5000);
+            $("#question").hide(5000);
+            //alert("Game over");
+
+            $("#timer").html("Game over");
+            doSomething();
+          } else {
+            $("#timer").html(timeLeft + ' seconds remaining') ;
+            timeLeft--;
+          }
+        }
+      };
+
+function answerSpan1(winLoose){
+    $("#answer #span1").on("click", function(){
+    winLoose++;
+    $("#answer").hide();
+  })
+}
+
+function answerSpan2(winLoose){
+    $("#answer #span2").on("click", function(){
+    winLoose++;
+    $("#answer").hide();
+    $("#question #start1").hide();
+  })
+}
+
+function answerSpan3(winLoose){
+		$("#answer #span3").on("click", function(){
+		winLoose++;
+		$("#answer").hide();
+		$("#question #start1").hide();
+	})
+}
+
+function answerSpan4(winLoose){
+		$("#answer #span4").on("click", function(){
+		winLoose++;
+		$("#answer").hide();
+		$("#question #start1").hide();
+	}) 
+}
+
+
+});
+</script>
+
+</body>
+</html>
